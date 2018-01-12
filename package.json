@@ -1,5 +1,5 @@
 {
-	"name": "linkify-urls",
+	"name": "@tdukart/linkify-urls",
 	"version": "1.4.0",
 	"description": "Linkify URLs in text",
 	"license": "MIT",
