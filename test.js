@@ -92,11 +92,19 @@ test('supports `@` in the URL path', t => {
 	t.is(m('https://sindresorhus.com/@foo'), '<a href="https://sindresorhus.com/@foo">https://sindresorhus.com/@foo</a>');
 });
 
-test('supports `value` option', t => {
+test('supports `value` option as string', t => {
 	t.is(m('See https://github.com/sindresorhus.com/linkify-urls for a solution', {
 		type: 'string',
 		value: 0
 	}), 'See <a href="https://github.com/sindresorhus.com/linkify-urls">0</a> for a solution');
+});
+
+test('supports `value` option as function', t => {
+	const returnFoo = href => (`foo-${href.substr(0, 4)}`);
+	t.is(m('See https://github.com/sindresorhus.com/linkify-urls for a solution', {
+		type: 'string',
+		value: returnFoo
+	}), 'See <a href="https://github.com/sindresorhus.com/linkify-urls">foo-http</a> for a solution');
 });
 
 test.failing('skips Git URLs', t => {
