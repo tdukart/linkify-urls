@@ -3,7 +3,7 @@
 	"version": "1.5.0",
 	"description": "Linkify URLs in text",
 	"license": "MIT",
-	"repository": "sindresorhus/linkify-urls",
+	"repository": "tdukart/linkify-urls",
 	"author": {
 		"name": "Sindre Sorhus",
 		"email": "sindresorhus@gmail.com",

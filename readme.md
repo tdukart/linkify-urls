@@ -6,7 +6,7 @@
 ## Install
 
 ```
-$ npm install linkify-urls
+$ npm install @tdukart/linkify-urls
 ```
 
 
