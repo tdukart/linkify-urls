@@ -30,7 +30,7 @@
 	],
 	"dependencies": {
 		"create-html-element": "^1.0.0",
-		"url-regex": "^4.0.0"
+		"url-regex": "^5.0.0"
 	},
 	"devDependencies": {
 		"ava": "*",
