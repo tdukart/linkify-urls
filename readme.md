@@ -1,6 +1,6 @@
 # linkify-urls [![Build Status](https://travis-ci.org/tdukart/linkify-urls.svg?branch=master)](https://travis-ci.org/tdukart/linkify-urls)
 
-> Linkify URLs in text
+> Linkify URLs in a string
 
 
 ## Install
@@ -39,49 +39,63 @@ document.body.appendChild(fragment);
 
 ## API
 
-### linkifyUrls(input, [options])
+### linkifyUrls(string, [options])
 
-#### input
+#### string
 
 Type: `string`
 
-Text with URLs to linkify.
+String with URLs to linkify.
 
 #### options
 
-Type: `Object`
+Type: `object`
 
 ##### attributes
 
-Type: `Object`
+Type: `object`
 
 HTML attributes to add to the link.
 
 ##### type
 
 Type: `string`<br>
-Values: `string` `dom`<br>
-Default: `string`
+Values: `'string'` `'dom'`<br>
+Default: `'string'`
 
 Format of the generated content.
 
-`string` will return it as a flat string like `'Visit <a href="https://example.com">https://example.com</a>'`.
+`'string'` will return it as a flat string like `'Visit <a href="https://example.com">https://example.com</a>'`.
 
-`dom` will return it as a `DocumentFragment` ready to be appended in a DOM safely, like `DocumentFragment(TextNode('Visit '), HTMLAnchorElement('https://example.com'))`. This type only works in the browser.
+`'dom'` will return it as a `DocumentFragment` ready to be appended in a DOM safely, like `DocumentFragment(TextNode('Visit '), HTMLAnchorElement('https://example.com'))`. This type only works in the browser.
 
 ##### value
 
-Type: `string`<br>
+Type: `string | Function`<br>
 Default: The URL
 
 Set a custom HTML value for the link.
+
+If it's a function, it will receive the URL as a string:
+
+```js
+linkifyUrls('See https://sindresorhus.com/foo', {
+	value: url => new URL(url).pathname
+});
+//=> 'See <a href="https://sindresorhus.com/foo">/foo</a>'
+```
+
+
+## Browser compatibility
+
+Version 3 of this package uses [negative lookbehind regex syntax](http://kangax.github.io/compat-table/es2016plus/#test-RegExp_Lookbehind_Assertions). Stay on version 2 if you need to support browsers that doesn't support this feature.
 
 
 ## Related
 
 - [url-regex](https://github.com/kevva/url-regex) - Regular expression for matching URLs
 - [linkify-issues](https://github.com/sindresorhus/linkify-issues) - Linkify GitHub issue references
-- [get-urls](https://github.com/sindresorhus/get-urls) - Get all URLs in text
+- [get-urls](https://github.com/sindresorhus/get-urls) - Get all URLs in a string
 
 
 ## License
